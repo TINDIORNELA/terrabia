@@ -70,8 +70,8 @@ The Smart Agriculture System is designed to revolutionize farming practices by p
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/iddhi-sulakshana/smart-agriculture-system.git
-    cd smart-agriculture-system
+    git clone https://github.com/TINDIORNELA/terrabia.git
+    cd terrabia
     ```
 
 2. **Run with Docker Compose**
@@ -95,8 +95,8 @@ The Smart Agriculture System is designed to revolutionize farming practices by p
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/iddhi-sulakshana/smart-agriculture-system.git
-    cd smart-agriculture-system
+    git clone https://github.com/TINDIORNELA/terrabia.git
+    cd terrabia
     ```
 
 2. **Install dependencies**
@@ -423,8 +423,9 @@ This project aims to:
 -   **Bridge Technology Gap**: Bring modern tech to traditional farming
 
 ---
+<div style="text-align: center;">
+  <p>Mon texte centré</p>
 
-<div align="center">
 
 **⭐ Star this repository if you found it helpful!**
 
@@ -435,4 +436,5 @@ Made with ❤️ for **Hacktoberfest 2025** and the **Global Agricultural Commun
 [![Sri Lanka](https://img.shields.io/badge/Made%20for-Sri%20Lanka-green?style=for-the-badge)](https://www.gov.lk/)
 
 </div>
+# terrabia
 # terrabia
