@@ -1,30 +1,39 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+const isAtlas = process.env.MONGO_URI?.startsWith("mongodb+srv://");
+
 const config = {
     mongodb: {
-        // TODO: Change (or review) the url to your MongoDB:
+        // URL MongoDB : Atlas ou local
         url: process.env.MONGO_URI
-            ? process.env.MONGO_URI + "?authSource=admin"
-            : "mongodb://127.0.0.1:27017",
+            ? isAtlas
+                ? process.env.MONGO_URI   // Atlas
+                : process.env.MONGO_URI + "?authSource=admin" // local avec auth
+            : "mongodb://127.0.0.1:27017", // fallback local
 
-        // TODO: Change this to your database name:
+        // Nom de la base
         databaseName: process.env.NODE_ENV
-            ? "agri_system" + `_${process.env.NODE_ENV}`
+            ? "agri_system_" + process.env.NODE_ENV
             : "agri_system_development",
     },
 
-    // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
+    // Répertoire des migrations
     migrationsDir: "migrations",
 
-    // The mongodb collection where the applied changes are stored. Only edit this when really necessary.
+    // Collection pour le suivi des migrations
     changelogCollectionName: "changelog",
 
-    // The file extension to create migrations and search for in migration dir
+    // Extension des fichiers de migration
     migrationFileExtension: ".js",
 
-    // Enable the algorithm to create a checksum of the file contents and use that in the comparison to determine
-    // if the file should be run.  Requires that scripts are coded to be run multiple times.
+    // Utiliser un hash de fichier pour vérifier les migrations
     useFileHash: false,
 
-    // Don't change this, unless you know what you're doing
+    // Système de modules
     moduleSystem: "commonjs",
 };
+
+export default config;
+
 export default config;
