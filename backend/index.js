@@ -17,14 +17,12 @@ const logger = winston();
 databaseConfig();
 // initialize routes
 routes(app);
-// initialize socket for chat
-const server = socketConfig(app);
-
-// run the server application
-server.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
     logger.info(
-        `Server listening on: http://localhost:${process.env.PORT || 3000}`
+        `Server listening on: http://0.0.0.0:${process.env.PORT || 3000}`
     );
 });
+// initialize socket for chat
+socketConfig(server);
 
 export default server;

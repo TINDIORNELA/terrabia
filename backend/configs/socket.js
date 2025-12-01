@@ -7,23 +7,7 @@ import socketAuthentication from "../middlewares/socketAuthentication.js";
 import fs from "fs";
 let io;
 let onlineUsers = [];
-export default function (app) {
-    const options = {
-        key: fs.readFileSync("./certs/privkey.pem"),
-        cert: fs.readFileSync("./certs/fullchain.pem"),
-    };
-    if (process.env.NODE_ENV === "development") {
-        options.key = fs.readFileSync("./certs/192.168.1.78+1-key.pem");
-        options.cert = fs.readFileSync("./certs/192.168.1.78+1.pem");
-    }
-    const createServer =
-        process.env.NODE_ENV === "test"
-            ? httpCreateServer
-            : process.env.NODE_ENV === "nosecure" ||
-              process.env.NODE_ENV === "development"
-            ? httpCreateServer
-            : httpsCreateServer;
-    const server = createServer(options, app);
+export default function (server) {
     io = new Server(server);
 
     io.engine.use(morgan("tiny"));
@@ -66,7 +50,7 @@ export default function (app) {
         });
     }).use(socketAuthentication);
 
-    return server;
+
 }
 
 export { io, onlineUsers };

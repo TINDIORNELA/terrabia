@@ -21,9 +21,11 @@ export default function () {
         : "jwtPrivateKey";
 
     // Setting a default value for the DB environment if not specified
-    process.env.DB = process.env.DB
+    process.env.DB = process.env.MONGO_URI
+        ? process.env.MONGO_URI
+        : process.env.DB
         ? process.env.DB
-        : "mongodb://127.0.0.1:27017/agri_system";
+        : "mongodb://127.0.0.1:2017/agri_system";
 
     // Setting a default value for the RECOMMENDATION_URL environment if not specified
     process.env.RECOMMENDATION_URL = process.env.RECOMMENDATION_URL
