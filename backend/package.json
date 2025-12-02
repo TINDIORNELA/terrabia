@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "db:up": "migrate-mongo up",
+    "db:up": "migrate-mongo up -f migrate-mongo-config.cjs",
     "dev": "nodemon index.js",
     "start": "npm run db:up && node index.js",
     "test": "vitest run --coverage --coverage.all=false"
