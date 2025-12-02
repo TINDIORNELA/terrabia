@@ -6,7 +6,19 @@ export default async function () {
     winston.info("Initializing MongoDB Connection");
 
     // Constructing the MongoDB connection string based on the environment
-    const databaseString = `${process.env.DB}_${process.env.NODE_ENV}?authSource=admin`;
+    let databaseString;
+    if (process.env.NODE_ENV === "production") {
+        databaseString = process.env.DB;
+        if (!databaseString.includes("authSource")) {
+            if (databaseString.includes("?")) {
+                databaseString += "&authSource=admin";
+            } else {
+                databaseString += "?authSource=admin";
+            }
+        }
+    } else {
+        databaseString = `${process.env.DB}_${process.env.NODE_ENV}?authSource=admin`;
+    }
 
     winston.info("Connecting to MongoDB at " + databaseString);
 
